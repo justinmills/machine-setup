@@ -52,7 +52,6 @@ cinst -y ruby.devkit
 if (Test-PendingReboot) { Invoke-Reboot }
 
 ## Basics
-cinst -y vlc
 cinst -y GoogleChrome
 cinst -y 7zip.install
 cinst -y sysinternals
