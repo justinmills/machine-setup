@@ -19,7 +19,7 @@ cinst -y Microsoft-Hyper-V-All -source windowsFeatures
 
 # Terminal alternatives
 # cinst -y hyper
-cinst -y cmder
+# cinst -y cmder
 
 # Little snippet to update path to pick up latest
 # $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
@@ -44,23 +44,22 @@ cinst -y emacs
 if (Test-PendingReboot) { Invoke-Reboot }
 
 ## Ruby, Go, Python
-cinst -y ruby
-cinst -y ruby.devkit
+# cinst -y ruby
+# cinst -y ruby.devkit
 
 # cinst -y python2
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
 ## Basics
-cinst -y GoogleChrome
-cinst -y 7zip.install
-cinst -y sysinternals
-cinst -y dropbox
-cinst -y lastpass
-cinst -y lastpass-for-applications
-cinst -y slack
-cinst -y spotify
-cinst -y docker-desktop
+# cinst -y GoogleChrome
+# cinst -y 7zip.install
+# cinst -y sysinternals
+# cinst -y dropbox
+# cinst -y lastpass
+# cinst -y lastpass-for-applications
+# cinst -y slack
+# cinst -y spotify
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
