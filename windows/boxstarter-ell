@@ -3,13 +3,15 @@
 # Run in a Powershell as Administrator
 # Also requires IE (or Edge?) as the default web browser, otherwise the weblaunch doesn't work.
 # START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/justinmills/machine-setup/master/windows/boxstarter-ell
+# Explicitly launch IE:
+# & 'C:\Program Files\Internet Explorer\iexplore.exe' "http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/justinmills/machine-setup/master/windows/boxstarter-ell"
 
 Update-ExecutionPolicy Unrestricted
 
 ## SCM's
 cinst -y git.install
 cinst -y poshgit
-cinst -y subversion
+cinst -y svn
 
 # TBD on visual studio pro 2017 15.7.0 or higher
 
