@@ -1,0 +1,39 @@
+# Boxstarter script only for Dev Setup
+
+# Run in a Powershell as Administrator
+# Also requires IE (or Edge?) as the default web browser, otherwise the weblaunch doesn't work.
+# START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/justinmills/machine-setup/master/windows/boxstarter-ell
+
+Update-ExecutionPolicy Unrestricted
+
+## SCM's
+cinst -y git.install
+cinst -y poshgit
+cinst -y subversion
+
+# TBD on visual studio pro 2017 15.7.0 or higher
+
+cinst -y sql-server-2016-developer-edition
+
+## Node, npm
+cinst -y nodejs.install --version 8.15.1
+npm install -g npm-windows-upgrade
+
+if (Test-PendingReboot) { Invoke-Reboot }
+
+## Ruby, Go, Python
+cinst -y ruby
+cinst -y ruby.devkit
+
+# cinst -y python2
+
+if (Test-PendingReboot) { Invoke-Reboot }
+
+# .Net environments 
+cinst -y install DotNetCore-SDK
+cinst -y install DotNet4.7.2
+
+if (Test-PendingReboot) { Invoke-Reboot }
+
+# Let's get Updates, too
+Install-WindowsUpdate -acceptEula
