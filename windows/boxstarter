@@ -2,8 +2,8 @@
 
 # Run in a Powershell as Administrator
 # Also requires IE (or Edge?) as the default web browser, otherwise the weblaunch doesn't work.
-# START http://boxstarter.org/package/nr/url?<url to raw gist>
-
+# START http://boxstarter.org/package/nr/url?<url to file>
+# START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/justinmills/machine-setup/master/windows/boxstarter
 
 # Configure Windows
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar
