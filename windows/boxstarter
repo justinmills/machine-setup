@@ -24,23 +24,23 @@ cinst -y git.install
 cinst -y poshgit
 
 # Restart PowerShell / CMDer before moving on - or run
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-[Environment]::SetEnvironmentVariable("HOME", "C:\Users\IEUser", "User")
+# $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+# [Environment]::SetEnvironmentVariable("HOME", "C:\Users\IEUser", "User")
 
 cinst Git-Credential-Manager-for-Windows
 cinst github-desktop
 cinst posh-github
 
 ## Node, npm
-cinst -y nodejs.install
-npm install -g npm-windows-upgrade
+# cinst -y nodejs.install
+# npm install -g npm-windows-upgrade
 
 ## Editors
-cinst -y visualstudiocode
+# cinst -y visualstudiocode
 cinst -y emacs
 
-## Visual Studio 2017
-cinst -y visualstudio2017community
+## Visual Studio
+# cinst -y visualstudio2017community
 if (Test-PendingReboot) { Invoke-Reboot }
 
 ## Ruby, Go, Python
