@@ -24,19 +24,19 @@ npm install -g npm-windows-upgrade
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
-## Ruby, Go, Python
-cinst -y ruby
-cinst -y ruby.devkit
-
-# cinst -y python2
+# .Net environments
+cinst -y DotNetCore-SDK
+cinst -y DotNet4.7.2
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
-# .Net environments 
-cinst -y install DotNetCore-SDK
-cinst -y install DotNet4.7.2
+# DevOps stuff
+cinst -y awstools.powershell
+cinst -y awscli
 
-if (Test-PendingReboot) { Invoke-Reboot }
+# Setup anaconda in lieu of python3 so we can install the aws stuff too.
+cinst -y anaconda3
+pip install aws
 
 # Let's get Updates, too
 Install-WindowsUpdate -acceptEula
