@@ -36,7 +36,8 @@ cinst -y awscli
 
 # Setup anaconda in lieu of python3 so we can install the aws stuff too.
 cinst -y anaconda3
-pip install aws
+# This will only work if we install a proper python I think
+# pip install aws
 
 cinst -y docker-desktop
 
