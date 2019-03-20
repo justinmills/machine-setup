@@ -4,7 +4,7 @@
 # Also requires IE (or Edge?) as the default web browser, otherwise the weblaunch doesn't work.
 # START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/justinmills/machine-setup/master/windows/boxstarter-ell
 # Explicitly launch IE:
-# & 'C:\Program Files\Internet Explorer\iexplore.exe' "http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/justinmills/machine-setup/master/windows/boxstarter-ell"
+# START 'C:\Program Files\Internet Explorer\iexplore.exe' "http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/justinmills/machine-setup/master/windows/boxstarter-ell"
 
 Update-ExecutionPolicy Unrestricted
 
@@ -38,5 +38,7 @@ cinst -y awscli
 cinst -y anaconda3
 pip install aws
 
+cinst -y docker-desktop
+
 # Let's get Updates, too
-Install-WindowsUpdate -acceptEula
+# Install-WindowsUpdate -acceptEula
