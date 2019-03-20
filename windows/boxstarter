@@ -1,0 +1,79 @@
+# Boxstarter script to bootstrap a new windows dev machine
+
+# Run in a Powershell as Administrator
+# Also requires IE (or Edge?) as the default web browser, otherwise the weblaunch doesn't work.
+# START http://boxstarter.org/package/nr/url?<url to raw gist>
+
+
+# Configure Windows
+Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar
+
+Update-ExecutionPolicy Unrestricted
+
+# NOTE This will not install boxstarter itself. If you want that I think you need to run this:
+# cinst -y boxstarter
+
+cinst -y Microsoft-Hyper-V-All -source windowsFeatures
+
+# Terminal alternatives
+# cinst -y hyper
+# cinst -y cmder
+
+## Git
+cinst -y git.install
+cinst -y poshgit
+
+# Restart PowerShell / CMDer before moving on - or run
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+[Environment]::SetEnvironmentVariable("HOME", "C:\Users\IEUser", "User")
+
+cinst Git-Credential-Manager-for-Windows
+cinst github-desktop
+cinst posh-github
+
+## Node, npm
+cinst -y nodejs.install
+npm install -g npm-windows-upgrade
+
+## Editors
+cinst -y visualstudiocode
+cinst -y emacs
+
+## Visual Studio 2017
+cinst -y visualstudio2017community
+if (Test-PendingReboot) { Invoke-Reboot }
+
+## Ruby, Go, Python
+cinst -y ruby
+cinst -y ruby.devkit
+
+# cinst -y python2
+
+if (Test-PendingReboot) { Invoke-Reboot }
+
+## Basics
+cinst -y vlc
+cinst -y GoogleChrome
+cinst -y 7zip.install
+cinst -y sysinternals
+cinst -y dropbox
+cinst -y lastpass
+cinst -y lastpass-for-applications
+cinst -y slack
+cinst -y spotify
+cinst -y docker-desktop
+
+# .Net environments 
+cinst -y install DotNetCore-SDK
+cinst -y install DotNet4.7.2
+
+if (Test-PendingReboot) { Invoke-Reboot }
+
+# Pinning Things
+# This does not work: https://github.com/chocolatey/choco/issues/627
+# Use 64 bit version
+# Install-ChocolateyPinnedTaskBarItem "$env:programfiles\Google\Chrome\Application\chrome.exe"
+# Install-ChocolateyPinnedTaskBarItem -TargetFilePath "${env:ProgramFiles(x86)}\Google\Chrome\Application\chrome.exe"
+
+# Let's get Updates, too
+Install-WindowsUpdate -acceptEula
