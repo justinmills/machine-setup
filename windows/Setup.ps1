@@ -25,24 +25,26 @@ Write-Host "------------------------------------" -ForegroundColor Green
 Powercfg /Change monitor-timeout-ac 20
 Powercfg /Change standby-timeout-ac 0
 # -----------------------------------------------------------------------------
-Write-Host ""
-Write-Host "Add 'This PC' Desktop Icon..." -ForegroundColor Green
-Write-Host "------------------------------------" -ForegroundColor Green
-$thisPCIconRegPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel"
-$thisPCRegValname = "{20D04FE0-3AEA-1069-A2D8-08002B30309D}"
-$item = Get-ItemProperty -Path $thisPCIconRegPath -Name $thisPCRegValname -ErrorAction SilentlyContinue
-if ($item) {
-    Set-ItemProperty  -Path $thisPCIconRegPath -name $thisPCRegValname -Value 0
-}
-else {
-    New-ItemProperty -Path $thisPCIconRegPath -Name $thisPCRegValname -Value 0 -PropertyType DWORD  | Out-Null
-}
+# Write-Host ""
+# Write-Host "Add 'This PC' Desktop Icon..." -ForegroundColor Green
+# Write-Host "------------------------------------" -ForegroundColor Green
+# $thisPCIconRegPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel"
+# $thisPCRegValname = "{20D04FE0-3AEA-1069-A2D8-08002B30309D}"
+# $item = Get-ItemProperty -Path $thisPCIconRegPath -Name $thisPCRegValname -ErrorAction SilentlyContinue
+# if ($item) {
+#     Set-ItemProperty  -Path $thisPCIconRegPath -name $thisPCRegValname -Value 0
+# }
+# else {
+#     New-ItemProperty -Path $thisPCIconRegPath -Name $thisPCRegValname -Value 0 -PropertyType DWORD  | Out-Null
+# }
 # -----------------------------------------------------------------------------
 Write-Host ""
 Write-Host "Removing Edge Desktop Icon..." -ForegroundColor Green
 Write-Host "------------------------------------" -ForegroundColor Green
 $edgeLink = $env:USERPROFILE + "\Desktop\Microsoft Edge.lnk"
-Remove-Item $edgeLink
+if (exist $edgeLink) {
+    Remove-Item $edgeLink
+}
 # -----------------------------------------------------------------------------
 Write-Host ""
 Write-Host "Enable Windows 10 Developer Mode..." -ForegroundColor Green
