@@ -43,19 +43,19 @@ Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 Write-Host ""
 Write-Host "Setting up emacs..." -ForegroundColor Green
 Write-Host "------------------------------------" -ForegroundColor Green
-New-Item -ItemType Directory -Force -Path ~\code\personal
-git clone https://github.com/syl20bnr/spacemacs.git ~\code\personal\spacemacs
-git clone https://github.com/justinmills/emacs-spacemacs.git ~\code\personal\emacs-spacemacs
-New-Item -Path ~/.emacs.d -ItemType SymbolicLink -Value ~\code\personal\spacemacs
-New-Item -Path ~/.spacemacs.d -ItemType SymbolicLink -Value ~\code\personal\emacs-spacemacs\dot.spacemacs.d
+New-Item -ItemType Directory -Force -Path $HOME\code\personal
+git clone https://github.com/syl20bnr/spacemacs.git $HOME\code\personal\spacemacs
+git clone https://github.com/justinmills/emacs-spacemacs.git $HOME\code\personal\emacs-spacemacs
+New-Item -Path $HOME/.emacs.d -ItemType SymbolicLink -Value $HOME\code\personal\spacemacs
+New-Item -Path $HOME/.spacemacs.d -ItemType SymbolicLink -Value $HOME\code\personal\emacs-spacemacs\dot.spacemacs.d
 
 Set-PSReadLineOption -EditMode Emacs
 # -----------------------------------------------------------------------------
 Write-Host ""
 Write-Host "Setting up PowerShell Profile..." -ForegroundColor Green
 Write-Host "------------------------------------" -ForegroundColor Green
-git clone https://github.com/justinmills/machine-setup.git ~\code\personal\machine-setup
-New-Item -Path $PROFILE -ItemType SymbolicLink -Value ~\code\personal\machine-setup\windows\PowerShell-profile.ps1
+git clone https://github.com/justinmills/machine-setup.git $HOME\code\personal\machine-setup
+New-Item -Path $PROFILE -ItemType SymbolicLink -Value $HOME\code\personal\machine-setup\windows\PowerShell-profile.ps1
 
 # Write-Host "------------------------------------" -ForegroundColor Green
 # Read-Host -Prompt "Setup is done, restart is needed, press [ENTER] to restart computer."
