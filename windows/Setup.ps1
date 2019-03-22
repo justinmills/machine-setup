@@ -20,7 +20,7 @@ if (!$realHome) {
     Write-Host ""
     Write-Host '[Environment]::SetEnvironmentVariable("HOME", "$HOME", "User")'
     Write-Host ""
-    exit
+    Return
 }
 # -----------------------------------------------------------------------------
 Write-Host ""
