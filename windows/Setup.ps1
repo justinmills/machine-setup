@@ -33,30 +33,62 @@ Write-Host "Enable Windows 10 Developer Mode..." -ForegroundColor Green
 Write-Host "------------------------------------" -ForegroundColor Green
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" /t REG_DWORD /f /v "AllowDevelopmentWithoutDevLicense" /d "1"
 # -----------------------------------------------------------------------------
-Write-Host ""
-Write-Host "Enable Remote Desktop..." -ForegroundColor Green
-Write-Host "------------------------------------" -ForegroundColor Green
-Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\" -Name "fDenyTSConnections" -Value 0
-Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\" -Name "UserAuthentication" -Value 1
-Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+# Write-Host ""
+# Write-Host "Enable Remote Desktop..." -ForegroundColor Green
+# Write-Host "------------------------------------" -ForegroundColor Green
+# Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\" -Name "fDenyTSConnections" -Value 0
+# Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\" -Name "UserAuthentication" -Value 1
+# Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+# -----------------------------------------------------------------------------
+# Some supporting functions for testing this out
+# function not-exist { -not (Test-Path $args) }
+# Set-Alias !exist not-exist -Option "Constant, AllScope"
+# Set-Alias exist Test-Path -Option "Constant, AllScope"
+$myCode = "$HOME\code\personal"
 # -----------------------------------------------------------------------------
 Write-Host ""
 Write-Host "Setting up emacs..." -ForegroundColor Green
 Write-Host "------------------------------------" -ForegroundColor Green
-New-Item -ItemType Directory -Force -Path $HOME\code\personal
-git clone https://github.com/syl20bnr/spacemacs.git $HOME\code\personal\spacemacs
-git clone https://github.com/justinmills/emacs-spacemacs.git $HOME\code\personal\emacs-spacemacs
-New-Item -Path $HOME/.emacs.d -ItemType SymbolicLink -Value $HOME\code\personal\spacemacs
-New-Item -Path $HOME/.spacemacs.d -ItemType SymbolicLink -Value $HOME\code\personal\emacs-spacemacs\dot.spacemacs.d
-
+if (-not (Test-Path "$myCode")) {
+    New-Item -ItemType Directory -Path "$myCode"
+} else {
+    Write-Host "  Skipping personal code dir creation, exists!" -ForegroundColor Yellow
+}
+if (-not (Test-Path "$myCode\spacemacs")) {
+    git clone https://github.com/syl20bnr/spacemacs.git "$myCode\spacemacs"
+} else {
+    Write-Host "  Skipping spacemacs clone, it exists!" -ForegroundColor Yellow
+}
+if (-not (Test-Path "$myCode\emacs-spacemacs")) {
+    git clone https://github.com/justinmills/emacs-spacemacs.git "$myCode\emacs-spacemacs"
+} else {
+    Write-Host "  Skipping my emacs config clone, it exists!" -ForegroundColor Yellow
+}
+if (-not (Test-Path "$HOME\.emacs.d")) {
+    New-Item -Path $HOME/.emacs.d -ItemType SymbolicLink -Value "$myCode\spacemacs"
+} else {
+    Write-Host "  Skipping symlink ~/.emacs.d, it exists!" -ForegroundColor Yellow
+}
+if (-not (Test-Path "$HOME\.spacemacs.d")) {
+    New-Item -Path $HOME/.spacemacs.d -ItemType SymbolicLink -Value "$myCode\emacs-spacemacs\dot.spacemacs.d"
+} else {
+    Write-Host "  Skipping symlink ~/.spacemacs.d, it exists!" -ForegroundColor Yellow
+}
 Set-PSReadLineOption -EditMode Emacs
 # -----------------------------------------------------------------------------
 Write-Host ""
 Write-Host "Setting up PowerShell Profile..." -ForegroundColor Green
 Write-Host "------------------------------------" -ForegroundColor Green
-git clone https://github.com/justinmills/machine-setup.git $HOME\code\personal\machine-setup
-New-Item -Path $PROFILE -ItemType SymbolicLink -Value $HOME\code\personal\machine-setup\windows\PowerShell-profile.ps1
-
+if (-not (Test-Path "$myCode\machine-setup")) {
+    git clone https://github.com/justinmills/machine-setup.git "$myCode\machine-setup"
+} else {
+    Write-Host "  Skipping machine-setup clone, it exists!" -ForegroundColor Yellow
+}
+if (-not (Test-Path "$PROFILE")) {
+    New-Item -Path $PROFILE -ItemType SymbolicLink -Value "$myCode\machine-setup\windows\PowerShell-profile.ps1"
+} else {
+    Write-Host "  Skipping symlink $PROFILE, it exists!" -ForegroundColor Yellow
+}
 # Write-Host "------------------------------------" -ForegroundColor Green
 # Read-Host -Prompt "Setup is done, restart is needed, press [ENTER] to restart computer."
 # Restart-Computer

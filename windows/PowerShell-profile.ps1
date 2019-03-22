@@ -164,3 +164,8 @@ del alias:gp -Force
 
 Set-Alias -Name gc -Value checkout
 Set-Alias -Name gp -Value pull
+
+# This was installed as part of poshgit
+Import-Module 'C:\tools\poshgit\dahlbyk-posh-git-9bda399\src\posh-git.psd1'
+# Load Posh-GitHub
+. "$HOME\Documents\WindowsPowerShell\Modules\Posh-GitHub\Posh-GitHub-Profile.ps1"
