@@ -39,6 +39,7 @@ cinst -y anaconda3
 # This will only work if we install a proper python I think
 # pip install aws
 
+cinst -y Microsoft-Hyper-V-All -source windowsFeatures
 cinst -y docker-desktop
 
 # Let's get Updates, too
