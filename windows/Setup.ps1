@@ -8,8 +8,8 @@ Write-Host ""
 Write-Host "Preparing to setup..." -ForegroundColor Green
 Write-Host "------------------------------------" -ForegroundColor Green
 function not-exist { -not (Test-Path $args) }
-Set-Alias !exist not-exist -Option "Constant, AllScope"
-Set-Alias exist Test-Path -Option "Constant, AllScope"
+Set-Alias !exist not-exist -Option "Constant, AllScope" -Force
+Set-Alias exist Test-Path -Option "Constant, AllScope" -Force
 $myCode = "$HOME\code\personal"
 
 if (!exist "$HOME") {
