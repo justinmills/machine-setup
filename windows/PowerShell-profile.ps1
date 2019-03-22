@@ -169,3 +169,6 @@ Set-Alias -Name gp -Value pull
 Import-Module 'C:\tools\poshgit\dahlbyk-posh-git-9bda399\src\posh-git.psd1'
 # Load Posh-GitHub
 . "$HOME\Documents\WindowsPowerShell\Modules\Posh-GitHub\Posh-GitHub-Profile.ps1"
+
+# Setup emacs line edit mode
+Set-PSReadLineOption -EditMode Emacs
