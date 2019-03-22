@@ -4,6 +4,9 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 #
 # -----------------------------------------------------------------------------
 # Some supporting functions/constants for testing this out
+Write-Host ""
+Write-Host "Preparing to setup..." -ForegroundColor Green
+Write-Host "------------------------------------" -ForegroundColor Green
 function not-exist { -not (Test-Path $args) }
 Set-Alias !exist not-exist -Option "Constant, AllScope"
 Set-Alias exist Test-Path -Option "Constant, AllScope"
