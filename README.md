@@ -26,7 +26,7 @@ user's home directory:
 
 To set it:
 
-: [Environment]::SetEnvironmentVariable("HOME", "C:\Users\justin", "justin")
+: [Environment]::SetEnvironmentVariable("HOME", "C:\Users\justin", "User")
 
 : iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/justinmills/machine-setup/master/windows/Setup.ps1'))
 
