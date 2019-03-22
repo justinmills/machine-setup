@@ -12,7 +12,7 @@ Set-Alias !exist not-exist -Option "Constant, AllScope" -Force
 Set-Alias exist Test-Path -Option "Constant, AllScope" -Force
 $myCode = "$HOME\code\personal"
 $realHome = [Environment]::GetEnvironmentVariable("HOME")
-if (!$realHome) {
+if (!$realHome -Or (!exist $HOME)) {
     Write-Host ""
     Write-Host 'Unable to determine if $HOME is set!' -ForegroundColor Red
     Write-Host ""
@@ -20,7 +20,7 @@ if (!$realHome) {
     Write-Host ""
     Write-Host '[Environment]::SetEnvironmentVariable("HOME", "$HOME", "User")'
     Write-Host ""
-    Return
+    Exit
 }
 # -----------------------------------------------------------------------------
 Write-Host ""
