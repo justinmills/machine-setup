@@ -3,6 +3,19 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 # Setup script to run to do some initial setup of a Windows desktop
 #
 # -----------------------------------------------------------------------------
+# Some supporting functions/constants for testing this out
+function not-exist { -not (Test-Path $args) }
+Set-Alias !exist not-exist -Option "Constant, AllScope"
+Set-Alias exist Test-Path -Option "Constant, AllScope"
+$myCode = "$HOME\code\personal"
+
+if (!exists "$HOME") {
+    Write-Host ""
+    Write-Host 'Unable to determine if $HOME is set!' -ForegroundColor Red
+    Write-Host ""
+    exit
+}
+# -----------------------------------------------------------------------------
 Write-Host ""
 Write-Host "Disable Sleep on AC Power..." -ForegroundColor Green
 Write-Host "------------------------------------" -ForegroundColor Green
@@ -39,12 +52,6 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUn
 # Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\" -Name "fDenyTSConnections" -Value 0
 # Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\" -Name "UserAuthentication" -Value 1
 # Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
-# -----------------------------------------------------------------------------
-# Some supporting functions for testing this out
-# function not-exist { -not (Test-Path $args) }
-# Set-Alias !exist not-exist -Option "Constant, AllScope"
-# Set-Alias exist Test-Path -Option "Constant, AllScope"
-$myCode = "$HOME\code\personal"
 # -----------------------------------------------------------------------------
 Write-Host ""
 Write-Host "Setting up emacs..." -ForegroundColor Green
