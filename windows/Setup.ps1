@@ -12,7 +12,7 @@ Set-Alias !exist not-exist -Option "Constant, AllScope"
 Set-Alias exist Test-Path -Option "Constant, AllScope"
 $myCode = "$HOME\code\personal"
 
-if (!exists "$HOME") {
+if (!exist "$HOME") {
     Write-Host ""
     Write-Host 'Unable to determine if $HOME is set!' -ForegroundColor Red
     Write-Host ""
