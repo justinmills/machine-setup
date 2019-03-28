@@ -10,6 +10,7 @@ Write-Host "------------------------------------" -ForegroundColor Green
 function not-exist { -not (Test-Path $args) }
 Set-Alias !exist not-exist -Option "Constant, AllScope" -Force
 Set-Alias exist Test-Path -Option "Constant, AllScope" -Force
+
 $myCode = "$HOME\code\personal"
 $realHome = [Environment]::GetEnvironmentVariable("HOME")
 if (!$realHome -Or (!exist $HOME)) {

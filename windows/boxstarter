@@ -1,3 +1,4 @@
+# -*- mode:powershell -*-
 # Boxstarter script to bootstrap a new windows dev machine
 #
 # This assumes you've run the "-ell" version prior
@@ -31,10 +32,6 @@ cinst Git-Credential-Manager-for-Windows
 cinst github-desktop
 cinst posh-github
 
-## Node, npm
-# cinst -y nodejs.install
-# npm install -g npm-windows-upgrade
-
 ## Editors
 # cinst -y visualstudiocode
 cinst -y emacs
@@ -52,14 +49,14 @@ if (Test-PendingReboot) { Invoke-Reboot }
 if (Test-PendingReboot) { Invoke-Reboot }
 
 ## Basics
-# cinst -y GoogleChrome
-# cinst -y 7zip.install
-# cinst -y sysinternals
-# cinst -y dropbox
-# cinst -y lastpass
-# cinst -y lastpass-for-applications
-# cinst -y slack
-# cinst -y spotify
+cinst -y GoogleChrome
+cinst -y 7zip.install
+cinst -y sysinternals
+cinst -y dropbox
+cinst -y lastpass
+cinst -y lastpass-for-applications
+cinst -y slack
+cinst -y spotify
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
