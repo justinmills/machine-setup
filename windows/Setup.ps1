@@ -1,9 +1,10 @@
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) { Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs; exit }
+# -----------------------------------------------------------------------------
 #
 # Setup script to run to do some initial setup of a Windows desktop
 #
 # -----------------------------------------------------------------------------
-# Some supporting functions/constants for testing this out
+# Some supporting functions/constants
 Write-Host ""
 Write-Host "Preparing to setup..." -ForegroundColor Green
 Write-Host "------------------------------------" -ForegroundColor Green
