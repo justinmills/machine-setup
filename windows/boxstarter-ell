@@ -15,8 +15,7 @@ cinst -y poshgit
 cinst -y svn
 
 # TBD on visual studio pro 2017 15.7.0 or higher
-
-cinst -y sql-server-2016-developer-edition
+# cinst -y sql-server-2016-developer-edition
 
 ## Node, npm (Must pickup PATH changes to get npm on the command line)
 cinst nodejs.install -y --version 8.15.1
@@ -26,8 +25,8 @@ npm install -g npm-windows-upgrade
 if (Test-PendingReboot) { Invoke-Reboot }
 
 # .Net environments
-cinst -y DotNetCore-SDK
-cinst -y DotNet4.7.2
+# cinst -y DotNetCore-SDK
+# cinst -y DotNet4.7.2
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
@@ -35,13 +34,20 @@ if (Test-PendingReboot) { Invoke-Reboot }
 cinst -y awstools.powershell
 cinst -y awscli
 
-# Setup anaconda in lieu of python3 so we can install the aws stuff too.
-cinst -y anaconda3
-# This will only work if we install a proper python I think
+# This section is for setting up various things for Docker to work. I think the above will actually
+#  be enough to get the aws cli installed. Probably should re-enable anaconda though, since it's
+# super useful.
+#
+# cinst -y anaconda3
+#
+# This will only work if we also install a python environment and activate it? Need more debugging
+# on windows to figure out what anaconda does there.
+#
 # pip install aws
 
 cinst -y Microsoft-Hyper-V-All -source windowsFeatures
 cinst -y docker-desktop
 
 # Let's get Updates, too
+# Not just yet...these take forever!
 # Install-WindowsUpdate -acceptEula
