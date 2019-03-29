@@ -8,12 +8,16 @@ Fire up a PowerShell as administrator. It might be helpful to run another instan
 within this shell so you can see any output from scripts that we may run in-process that may exit
 (like the Setup.ps1 script referenced below). To do that run the following:
 
-: powershell -NoExit
+```ps
+powershell -NoExit
+```
 
 You may need to run the following to allow you to execute scripts. I don't think I've consistently
 had to, but could be the machine's I'm using.
 
-: Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+```ps
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+```
 
 You might also need to make sure you have $HOME set properly. PowerShell will provide this often,
 but it's not set as a system-wide environment variable, so you should do that. The Setup.ps1 script
@@ -33,11 +37,16 @@ echo $HOME
 The [BoxStarter](https://boxstarter.org/) scripts should be run first to install all of the "base"
 software you will need. These can be run and re-run as often as you like.
 
-: START 'C:\Program Files\Internet Explorer\iexplore.exe' "http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/justinmills/machine-setup/master/windows/boxstarter-ell"
+```ps
+START 'C:\Program Files\Internet Explorer\iexplore.exe' "http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/justinmills/machine-setup/master/windows/boxstarter-ell"
 
-: START 'C:\Program Files\Internet Explorer\iexplore.exe' "http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/justinmills/machine-setup/master/windows/boxstarter"
+START 'C:\Program Files\Internet Explorer\iexplore.exe' "http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/justinmills/machine-setup/master/windows/boxstarter"
+```
 
-This will install a bunch of software and do some machine setup. The following will wrap things up and install a bunch of my stuff, etc.
+This will install a bunch of software and do some machine setup/configuration. The following will
+wrap things up, customize some things (powershell, emacs, etc) and do any other things too painful
+to do via boxstarter, but easier via plain ole PowerShell
 
-: iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/justinmills/machine-setup/master/windows/Setup.ps1'))
-
+```ps
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/justinmills/machine-setup/master/windows/Setup.ps1'))
+```
