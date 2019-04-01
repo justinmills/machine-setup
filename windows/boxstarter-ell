@@ -10,17 +10,17 @@
 Update-ExecutionPolicy Unrestricted
 
 ## SCM's
-cinst -y git.install
-cinst -y poshgit
-cinst -y svn
+#cinst -y git.install
+#cinst -y poshgit
+#cinst -y svn
 
 # TBD on visual studio pro 2017 15.7.0 or higher
 # cinst -y sql-server-2016-developer-edition
 
 ## Node, npm (Must pickup PATH changes to get npm on the command line)
-cinst nodejs.install -y --version 8.15.1
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-npm install -g npm-windows-upgrade
+#cinst nodejs.install -y --version 8.15.1
+#$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+#npm install -g npm-windows-upgrade
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
@@ -45,8 +45,8 @@ cinst -y awscli
 #
 # pip install aws
 
-cinst -y Microsoft-Hyper-V-All -source windowsFeatures
-cinst -y docker-desktop
+#cinst -y Microsoft-Hyper-V-All -source windowsFeatures
+#cinst -y docker-desktop
 
 # Let's get Updates, too
 # Not just yet...these take forever!
