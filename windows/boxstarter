@@ -16,7 +16,9 @@ Update-ExecutionPolicy Unrestricted
 # NOTE This will not install boxstarter itself. If you want that I think you need to run this:
 # cinst -y boxstarter
 
-cinst -y Microsoft-Hyper-V-All -source windowsFeatures
+# Docker Desktop installs HyperV
+# cinst -y Microsoft-Hyper-V-All -source windowsFeatures
+cinst -y docker-desktop
 
 # Terminal alternatives
 # cinst -y hyper
@@ -56,7 +58,7 @@ cinst -y dropbox
 cinst -y lastpass
 cinst -y lastpass-for-applications
 cinst -y slack
-cinst -y spotify
+#cinst -y spotify This doesn't work yet
 
 if (Test-PendingReboot) { Invoke-Reboot }
 

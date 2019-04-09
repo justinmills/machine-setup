@@ -11,6 +11,7 @@ Update-ExecutionPolicy Unrestricted
 
 ## SCM's
 #cinst -y git.install
+cinst -y GitVersion.portable
 #cinst -y poshgit
 #cinst -y svn
 
@@ -38,7 +39,7 @@ cinst -y awscli
 #  be enough to get the aws cli installed. Probably should re-enable anaconda though, since it's
 # super useful.
 #
-# cinst -y anaconda3
+cinst -y anaconda3
 #
 # This will only work if we also install a python environment and activate it? Need more debugging
 # on windows to figure out what anaconda does there.
