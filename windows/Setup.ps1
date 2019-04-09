@@ -116,7 +116,17 @@ if (-not (Test-Path "$PROFILE")) {
 }
 # -----------------------------------------------------------------------------
 Write-Host ""
+Write-Host "Setting up GitBash Profile..." -ForegroundColor Green
+Write-Host "------------------------------------" -ForegroundColor Green
+if (-not (Test-Path "$HOME\.profile")) {
+    New-Item -Path $HOME/.profile -ItemType SymbolicLink -Value "$myCode\machine-setup\windows\dot.profile"
+} else {
+    Write-Host "  Skipping symlink ~/.profile, it exists!" -ForegroundColor Yellow
+}
+# -----------------------------------------------------------------------------
+Write-Host ""
 Write-Host "Remapping caps lock to control..." -ForegroundColor Green
+
 reg import ./control-caps.reg
 # Write-Host "------------------------------------" -ForegroundColor Green
 # Read-Host -Prompt "Setup is done, restart is needed, press [ENTER] to restart computer."
