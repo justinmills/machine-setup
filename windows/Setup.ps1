@@ -92,6 +92,13 @@ if (-not (Test-Path "$HOME\.spacemacs.d")) {
 } else {
     Write-Host "  Skipping symlink ~/.spacemacs.d, it exists!" -ForegroundColor Yellow
 }
+# Deft link
+if (-not (Test-Path "$HOME\deft")) {
+    New-Item -Path $HOME/deft -ItemType SymbolicLink -Value "$HOME\Dropbox\Justin\deft"
+} else {
+    Write-Host "  Skipping symlink ~/deft, it exists!" -ForegroundColor Yellow
+}
+
 Set-PSReadLineOption -EditMode Emacs
 # -----------------------------------------------------------------------------
 Write-Host ""
@@ -107,6 +114,10 @@ if (-not (Test-Path "$PROFILE")) {
 } else {
     Write-Host "  Skipping symlink $PROFILE, it exists!" -ForegroundColor Yellow
 }
+# -----------------------------------------------------------------------------
+Write-Host ""
+Write-Host "Remapping caps lock to control..." -ForegroundColor Green
+reg import ./control-caps.reg
 # Write-Host "------------------------------------" -ForegroundColor Green
 # Read-Host -Prompt "Setup is done, restart is needed, press [ENTER] to restart computer."
 # Restart-Computer
