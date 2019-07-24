@@ -18,7 +18,7 @@ Update-ExecutionPolicy Unrestricted
 
 # Docker Desktop installs HyperV
 # cinst -y Microsoft-Hyper-V-All -source windowsFeatures
-cinst -y docker-desktop
+# cinst -y docker-desktop
 
 # Terminal alternatives
 # cinst -y hyper
@@ -30,13 +30,13 @@ cinst -y docker-desktop
 # If required update path with relevant path
 # [Environment]::SetEnvironmentVariable("HOME", "C:\Users\IEUser", "User")
 
-cinst Git-Credential-Manager-for-Windows
-cinst github-desktop
+# cinst Git-Credential-Manager-for-Windows
+# cinst github-desktop
 cinst posh-github
 
 ## Editors
 # cinst -y visualstudiocode
-cinst -y emacs
+# cinst -y emacs
 
 ## Visual Studio
 # cinst -y visualstudio2017community
@@ -52,12 +52,12 @@ if (Test-PendingReboot) { Invoke-Reboot }
 
 ## Basics
 cinst -y GoogleChrome
-cinst -y 7zip.install
+# cinst -y 7zip.install
 cinst -y sysinternals
-cinst -y dropbox
-cinst -y lastpass
-cinst -y lastpass-for-applications
-cinst -y slack
+# cinst -y dropbox
+# cinst -y lastpass
+# cinst -y lastpass-for-applications
+# cinst -y slack
 #cinst -y spotify This doesn't work yet
 
 if (Test-PendingReboot) { Invoke-Reboot }
